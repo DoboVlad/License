@@ -3,7 +3,7 @@ html, body{
   margin: 0;
   box-sizing: border-box;
   color: white;
-  background-image:linear-gradient(to bottom right,#021720,#042838);
+  background-image:linear-gradient(to bottom right,#020320,#042838);
   scroll-behavior: smooth;
 }
 
