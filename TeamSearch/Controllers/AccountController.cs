@@ -8,25 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using TeamSearch.Data;
 using TeamSearch.DTO;
+using TeamSearch.Interfaces;
 using TeamSearch.Models;
 
 namespace TeamSearch.Controllers
-{   
-    public class AccountController: BaseApiController
+{
+    public class AccountController : BaseApiController
     {
         private readonly DataContext _context;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(DataContext context)
+        public AccountController(DataContext context, ITokenService tokenService)
         {
+            _tokenService = tokenService;
             _context = context;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> register(RegisterDTO user)
+        public async Task<ActionResult<UserDto>> register(RegisterDTO user)
         {
-            if(user.password != user.ConfirmPassword) return BadRequest("Passwords aren't the same");
+            if (user.password != user.ConfirmPassword) return BadRequest("Passwords aren't the same");
 
-           if(await emailExists(user.email)) return BadRequest("Email is already userd");
+            if (await emailExists(user.email)) return BadRequest("Email is already userd");
 
             using var hmac = new HMACSHA512();
 
@@ -42,7 +45,12 @@ namespace TeamSearch.Controllers
             _context.USERS.Add(registerUser);
             await _context.SaveChangesAsync();
 
-            return registerUser;
+            return new UserDto
+            {
+                Id = registerUser.Id,
+                email = registerUser.email,
+                token = _tokenService.CreateToken(registerUser)
+            };
         }
 
         private async Task<bool> emailExists(string email)
@@ -51,25 +59,30 @@ namespace TeamSearch.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<User>> login(LoginDTO user)
+        public async Task<ActionResult<UserDto>> login(LoginDTO user)
         {
             var userToLogin = await _context.USERS.SingleOrDefaultAsync(x => x.email == user.email);
 
-            if(userToLogin == null) return Unauthorized("Email or password are incorect");
+            if (userToLogin == null) return Unauthorized("Email or password are incorect");
 
             using var hmac = new HMACSHA512(userToLogin.PasswordSalt);
 
             var encodedPassword = hmac.ComputeHash(Encoding.UTF8.GetBytes(user.password));
 
-            for(int i=0;i<encodedPassword.Length;i++)
+            for (int i = 0; i < encodedPassword.Length; i++)
             {
-                if(encodedPassword[i] != userToLogin.PasswordHash[i])
+                if (encodedPassword[i] != userToLogin.PasswordHash[i])
                 {
                     return Unauthorized("Email or password are incorect");
                 }
             }
 
-            return userToLogin;
-        } 
+            return new UserDto
+            {
+                Id = userToLogin.Id,
+                email = userToLogin.email,
+                token = _tokenService.CreateToken(userToLogin)
+            };
+        }
     }
 }
