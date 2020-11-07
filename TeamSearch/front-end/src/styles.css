@@ -1,0 +1,17 @@
+html, body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  background-image:linear-gradient(to bottom right,#021720,#042838);
+  scroll-behavior: smooth;
+}
+
+
+*{
+  box-sizing: inherit;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
