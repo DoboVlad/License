@@ -5,6 +5,9 @@ html, body{
   color: white;
   background-image:linear-gradient(to bottom right,#020320,#042838);
   scroll-behavior: smooth;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
 }
 
 
