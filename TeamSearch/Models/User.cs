@@ -18,5 +18,9 @@ namespace TeamSearch.Models
         public byte[] PasswordHash { get; set; }      
 
         public byte[] PasswordSalt { get; set; } 
+
+        public List<UserLanguage> programmingLanguages { get; set; }
+
+        public List<UserTeam> userTeam { get; set; }
     }
 }
