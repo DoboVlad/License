@@ -13,6 +13,6 @@ namespace TeamSearch.Models
 
         public string imageUrl { get; set; }
 
-        public List<UserTeam> members { get; set; }
+        public ICollection<UserTeam> members { get; set; }
     }
 }

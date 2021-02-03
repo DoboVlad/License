@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
 namespace TeamSearch.Models
 {
-    public class User
+    public class User: IdentityUser<int>
     {
-        public int Id { get; set; }
-
         public string firstName { get; set; }
 
         public string lastName { get; set; }
 
-        public string email { get; set; }
-        
-        public byte[] PasswordHash { get; set; }      
+        public ICollection<UserLanguage> programmingLanguages { get; set; }
 
-        public byte[] PasswordSalt { get; set; } 
+        public ICollection<UserTeam> userTeam { get; set; }
 
-        public List<UserLanguage> programmingLanguages { get; set; }
-
-        public List<UserTeam> userTeam { get; set; }
+        public ICollection<UserRole> userRole { get; set; }
     }
 }

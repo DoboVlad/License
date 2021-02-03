@@ -7,6 +7,7 @@ namespace TeamSearch.Models
 {
     public class FieldLanguage
     {
+        public int Id { get; set; }
         public int FieldId { get; set; }
         public Field Field { get; set; }
         public int LanguageId { get; set; }

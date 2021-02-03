@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,16 @@ namespace TeamSearch.Controllers
 {
     public class AccountController : BaseApiController
     {
-        private readonly DataContext _context;
+        private readonly UserManager<User> userManager;
+        private readonly SignInManager<User> signInManager;
         private readonly ITokenService _tokenService;
 
-        public AccountController(DataContext context, ITokenService tokenService)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager
+            ,ITokenService tokenService)
         {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
             _tokenService = tokenService;
-            _context = context;
         }
 
         [HttpPost("register")]
@@ -31,56 +35,52 @@ namespace TeamSearch.Controllers
 
             if (await emailExists(user.email)) return BadRequest("Email is already userd");
 
-            using var hmac = new HMACSHA512();
-
             var registerUser = new User
             {
-                email = user.email.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(user.password)),
-                PasswordSalt = hmac.Key,
+                UserName = user.email,
+                Email = user.email.ToLower(),
                 firstName = user.firstName,
                 lastName = user.lastName
             };
 
-            _context.USERS.Add(registerUser);
-            await _context.SaveChangesAsync();
+            var result = await userManager.CreateAsync(registerUser, user.password);
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
 
             return new UserDto
             {
                 Id = registerUser.Id,
-                email = registerUser.email,
+                email = registerUser.Email,
                 token = _tokenService.CreateToken(registerUser)
             };
         }
 
         private async Task<bool> emailExists(string email)
         {
-            return await _context.USERS.AnyAsync(x => x.email == email.ToLower());
+            return await userManager.Users.AnyAsync(x => x.Email == email);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> login(LoginDTO user)
         {
-            var userToLogin = await _context.USERS.SingleOrDefaultAsync(x => x.email == user.email);
+            var userToLogin = await userManager.FindByEmailAsync(user.email);
 
             if (userToLogin == null) return Unauthorized("Email or password are incorect");
 
-            using var hmac = new HMACSHA512(userToLogin.PasswordSalt);
+            var result = await signInManager.CheckPasswordSignInAsync(userToLogin, user.password, false);
 
-            var encodedPassword = hmac.ComputeHash(Encoding.UTF8.GetBytes(user.password));
-
-            for (int i = 0; i < encodedPassword.Length; i++)
+            if (!result.Succeeded)
             {
-                if (encodedPassword[i] != userToLogin.PasswordHash[i])
-                {
-                    return Unauthorized("Email or password are incorect");
-                }
+                return Unauthorized();
             }
 
             return new UserDto
             {
                 Id = userToLogin.Id,
-                email = userToLogin.email,
+                email = userToLogin.Email,
                 token = _tokenService.CreateToken(userToLogin)
             };
         }

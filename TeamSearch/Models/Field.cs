@@ -8,7 +8,7 @@ namespace TeamSearch.Models
 
         public string name { get; set; }
 
-        public List<FieldLanguage> fieldLanguages { get; set; }
+        public ICollection<FieldLanguage> fieldLanguages { get; set; }
 
     }
 }

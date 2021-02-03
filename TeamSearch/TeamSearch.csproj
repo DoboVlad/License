@@ -5,7 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20210203155428_IdentityAdded.cs" />
+    <Compile Remove="Migrations\20210203155428_IdentityAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210203160429_IdentityAdded.cs" />
+    <Compile Remove="Migrations\20210203160429_IdentityAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210203161109_IdentityAdded.cs" />
+    <Compile Remove="Migrations\20210203161109_IdentityAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210203161617_IdentityAdded.cs" />
+    <Compile Remove="Migrations\20210203161617_IdentityAdded.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -20,7 +20,7 @@ namespace TeamSearch.Services
         public string CreateToken(User user)
         {
             var claims = new List<Claim>{
-                new Claim(JwtRegisteredClaimNames.NameId, user.email)
+                new Claim(JwtRegisteredClaimNames.NameId, user.Email)
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

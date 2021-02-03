@@ -8,8 +8,8 @@ namespace TeamSearch.Models
 
         public string name { get; set; }
 
-        public List<UserLanguage> userLanguage { get; set; }
+        public ICollection<UserLanguage> userLanguage { get; set; }
 
-        public List<FieldLanguage> fieldLanguage { get; set; }
+        public ICollection<FieldLanguage> fieldLanguage { get; set; }
     }
 }
