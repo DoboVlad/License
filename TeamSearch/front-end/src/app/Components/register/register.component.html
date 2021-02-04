@@ -18,7 +18,6 @@
           <label for="email">Email: </label>
           <input type="text" class="email" id="email">
         </span>
-        <br>
         <span class="error">Invalid email</span>
         <span class="group">
           <label for="password">Password:</label>
@@ -29,13 +28,68 @@
           <label for="email">Confirm password: </label>
           <input type="text" class="email" id="email">
         </span>
-        <br>
         <span class="error">Invalid email</span>
         <br>
       </form>
       </div>
       <div class="register-form--2">
-        vfdvd
+        <div class="field">
+          <p class="qst">What field are you interested in?</p>
+          <form action="" class="checkbox">
+            <div class="group-field">
+              <input type="checkbox" name="backend" id="backend">
+              <label for="backend">Backend</label>
+              <br>
+              <input type="checkbox" name="frontend" id="frontend">
+              <label for="frontend">Frontend</label>
+            </div>
+            <div class="group-field">
+              <input type="checkbox" name="A.I." id="A.I.">
+              <label for="A.I.">A.I.</label>
+              <br>
+              <input type="checkbox" name="MachineLearning" id="MachineLearning">
+              <label for="MachineLearning">Machine Learning</label>
+            </div>
+            <div class="group-field">
+              <input type="checkbox" name="DevOps" id="DevOps">
+              <label for="DevOps">DevOps</label>
+              <br>
+              <input type="checkbox" name="Testing" id="Testing">
+              <label for="Testing">Testing</label>
+            </div>
+          </form>
+        </div>
+        <br>
+        <div class="language">
+          <p class="p_language">What programming languages you know?</p>
+          <form action="" class="checkbox">
+            <div class="group-field">
+              <input type="checkbox" name="backend" id="backend">
+              <label for="backend">Backend</label>
+              <br>
+              <input type="checkbox" name="frontend" id="frontend">
+              <label for="frontend">Frontend</label>
+            </div>
+            <div class="group-field">
+              <input type="checkbox" name="A.I." id="A.I.">
+              <label for="A.I.">A.I.</label>
+              <br>
+              <input type="checkbox" name="MachineLearning" id="MachineLearning">
+              <label for="MachineLearning">Machine Learning</label>
+            </div>
+            <div class="group-field">
+              <input type="checkbox" name="DevOps" id="DevOps">
+              <label for="DevOps">DevOps</label>
+              <br>
+              <input type="checkbox" name="Testing" id="Testing">
+              <label for="Testing">Testing</label>
+            </div>
+          </form>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-white">Register</button>
+        <br>
+        <span class="already">Already have an account? <a routerLink="/login">Login here!</a></span>
       </div>
     </div>
   </div>

@@ -1,10 +1,9 @@
 .main-container{
-  height: 100vh;
+  min-height: 100vh;
   padding: 10px;
 }
 
 .container{
-  height: 100%;
   background-image: linear-gradient(to right bottom, rgba(2,3,32 ,0.55), rgba(4,40,56,0.55)),
    url('../../../assets/register.jpg');
   background-repeat: no-repeat;
@@ -13,6 +12,8 @@
   animation: fadeInAnimation 1s;
   display: flex;
   padding: 60px 80px;
+  min-height: 100vh;
+
 }
 
 .main-side{
@@ -31,8 +32,36 @@
   justify-content: space-between;
 }
 
+.btn{
+  font-size: 16px;
+  outline: none;
+  border: none;
+  padding: 10px 25px;
+  align-self:flex-start;
+  margin-left: 30px;
+}
+
+.field{
+  width: 100%;
+}
+
+.group-field{
+  display: inline-block;
+  text-align: start;
+}
+
 form{
   width: 70%;
+}
+
+.qst{
+  text-align: start;
+  padding-left: 20px;
+}
+
+.checkbox{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .error{
@@ -52,8 +81,23 @@ form{
   justify-content: center;
 }
 
+.already{
+  display: inline;
+  align-self:flex-start;
+  margin-left: 20px;
+}
+
 .register-form--2{
   flex:1;
+  height: 60%;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.p_language{
+  text-align: start;
+  padding-left: 20px;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -64,5 +108,48 @@ form{
 
   .register-form{
     border: none;
+
+    border-bottom: 1px solid white;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container{
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+  .register-form{
+    padding: 0;
+  }
+
+  input[type="text"]{
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .checkbox{
+    flex-direction: column;
+  }
+
+  .btn{
+    font-size: 12px;
+    outline: none;
+    border: none;
+    padding: 5px 15px;
+    align-self:flex-start;
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .checkbox{
+    flex-direction: column;
+  }
+  form{
+    width: auto;
+  }
+  .register-form--2{
+    height: auto;
+    min-height: 60vh;
   }
 }

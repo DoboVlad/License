@@ -51,14 +51,11 @@
   text-align: center;
 }
 
-
-
 .btn{
   font-size: 16px;
   outline: none;
   border: none;
   padding: 10px 25px;
-
 }
 
 .helper{
@@ -68,7 +65,7 @@
 
 @media only screen and (max-width: 400px) {
   .main-side{
-    font-size: 14px;
+    font-size: 12px;
     flex: 1;
   }
 
@@ -84,7 +81,12 @@
       display: none;
     }
 
+    form{
+      width: 100%;
+    }
+
     .btn{
-      font-size: 14px;
+      font-size: 12px;
+      padding: 5px 15px;
     }
 }
