@@ -1,30 +1,44 @@
-<body>
-  <div class="container" id="container">
-    <!--SIGN UP FORM-->
-    <div class="form-container sign-up-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <a class="ghost" id="signUp" routerLink="/login">Login</a>
-        </div>
+<div class="main-container">
+  <div class="container">
+    <div class="main-side">
+      <div class="register-form">
+      <form action="">
+        <h1 class="title">Register form</h1>
+        <span class="group">
+          <label for="email">First name: </label>
+          <input type="text" class="email" id="email">
+        </span>
+        <br>
+        <span class="group">
+          <label for="email">Last name: </label>
+          <input type="text" class="email" id="email">
+        </span>
+        <br>
+        <span class="group">
+          <label for="email">Email: </label>
+          <input type="text" class="email" id="email">
+        </span>
+        <br>
+        <span class="error">Invalid email</span>
+        <span class="group">
+          <label for="password">Password:</label>
+          <input type="text" class="password" id="password">
+        </span>
+        <br>
+        <span class="group">
+          <label for="email">Confirm password: </label>
+          <input type="text" class="email" id="email">
+        </span>
+        <br>
+        <span class="error">Invalid email</span>
+        <br>
+      </form>
+      </div>
+      <div class="register-form--2">
+        vfdvd
       </div>
     </div>
-    <div class="overlay-container">
-      <form>
-        <h1>Create Account</h1>
-        <input #name type="text" placeholder="Name" required/>
-
-        <input #surname type="text" placeholder="Surname" />
-
-        <input #phoneNo type="text" placeholder="Phone Number"/>
-
-        <input #email type="text" placeholder="Email"/>
-
-        <input #password type="password" placeholder="Password"/>
-
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
   </div>
-  </body>
+</div>
+
+
