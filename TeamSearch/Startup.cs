@@ -48,6 +48,7 @@ namespace TeamSearch
                 .AddRoleManager<RoleManager<Role>>()
                 .AddSignInManager<SignInManager<User>>()
                 .AddEntityFrameworkStores<DataContext>();
+                
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options => 
                     {

@@ -1,24 +1,28 @@
-<body>
-  <div class="container" id="container">
-    <!--SIGN IN FORM-->
-    <div class="form-container sign-in-container">
-      <form>
-        <h1>Sign in</h1>
-        <input #emailSignIn type="email" placeholder="Email or phone number" />
-        <input #passwordSignIn type="password" placeholder="Password"/>
-
-        <a routerLink="/forgot-password">Forgot your password?</a>
-        <button type="submit">Login</button>
+<div class="main-container">
+  <div class="container">
+    <div class="main-side">
+      <div class="login-form">
+      <h1 class="title">Login form</h1>
+      <form action="">
+        <span class="group">
+          <label for="email">Email: </label>
+          <input type="text" class="email" id="email">
+        </span>
+        <span class="error">Invalid email</span>
+        <span class="group">
+          <label for="password">Password:</label>
+          <input type="text" class="password" id="password">
+        </span>
+        <span class="error">Invalid email</span>
+        <span class="error--1">Invalid email</span>
+        <button type="submit" class="btn btn-white">Login</button>
       </form>
-    </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-right">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button class="ghost sign" id="signIn" routerLink="/register">Sign In</button>
-        </div>
+      <br>
+      Don't have an account? <a href="">Register here</a>
       </div>
     </div>
+    <div class="helper">
+
+    </div>
   </div>
-  </body>
+</div>
