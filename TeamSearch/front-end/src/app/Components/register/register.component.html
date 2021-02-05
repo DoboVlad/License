@@ -1,41 +1,42 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 <div class="main-container">
   <div class="container">
     <div class="main-side">
       <div class="register-form">
-      <form action="">
+        <div class="form">
         <h1 class="title">Register form</h1>
         <span class="group">
-          <label for="email">First name: </label>
-          <input type="text" class="email" id="email">
+          <label for="firstName">First name: </label>
+          <input type="text" class="firstName" id="firstName" formControlName="FirstName">
         </span>
         <br>
         <span class="group">
-          <label for="email">Last name: </label>
-          <input type="text" class="email" id="email">
+          <label for="LastName">Last name: </label>
+          <input type="text" class="email" id="LastName" formControlName="LastName">
         </span>
         <br>
         <span class="group">
           <label for="email">Email: </label>
-          <input type="text" class="email" id="email">
+          <input type="text" class="email" id="email" formControlName="Email">
         </span>
         <span class="error">Invalid email</span>
         <span class="group">
           <label for="password">Password:</label>
-          <input type="text" class="password" id="password">
+          <input type="text" class="password" id="password" formControlName="Password">
         </span>
         <br>
         <span class="group">
-          <label for="email">Confirm password: </label>
-          <input type="text" class="email" id="email">
+          <label for="ConfirmPassword">Confirm password: </label>
+          <input type="text" class="email" id="ConfirmPassword" formControlName="ConfirmPassword">
         </span>
         <span class="error">Invalid email</span>
         <br>
-      </form>
+    </div>
       </div>
       <div class="register-form--2">
         <div class="field">
           <p class="qst">What field are you interested in?</p>
-          <form action="" class="checkbox">
+            <div class="form">
             <div class="group-field">
               <input type="checkbox" name="backend" id="backend">
               <label for="backend">Backend</label>
@@ -57,12 +58,12 @@
               <input type="checkbox" name="Testing" id="Testing">
               <label for="Testing">Testing</label>
             </div>
-          </form>
+          </div>
         </div>
         <br>
         <div class="language">
           <p class="p_language">What programming languages you know?</p>
-          <form action="" class="checkbox">
+          <div class="form">
             <div class="group-field">
               <input type="checkbox" name="backend" id="backend">
               <label for="backend">Backend</label>
@@ -84,7 +85,7 @@
               <input type="checkbox" name="Testing" id="Testing">
               <label for="Testing">Testing</label>
             </div>
-          </form>
+        </div>
         </div>
         <br>
         <button type="submit" class="btn btn-white">Register</button>
@@ -94,5 +95,5 @@
     </div>
   </div>
 </div>
-
+</form>
 

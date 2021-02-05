@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using TeamSearch.Data;
 using TeamSearch.Interfaces;
+using TeamSearch.Mappers;
 using TeamSearch.Models;
 using TeamSearch.Services;
 
@@ -48,7 +50,9 @@ namespace TeamSearch
                 .AddRoleManager<RoleManager<Role>>()
                 .AddSignInManager<SignInManager<User>>()
                 .AddEntityFrameworkStores<DataContext>();
-                
+            
+            services.AddAutoMapper(typeof(FieldMapper).Assembly);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options => 
                     {
