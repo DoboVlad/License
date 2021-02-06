@@ -38,54 +38,24 @@
           <p class="qst">What field are you interested in?</p>
             <div class="form">
             <div class="group-field">
-              <input type="checkbox" name="backend" id="backend">
-              <label for="backend">Backend</label>
-              <br>
-              <input type="checkbox" name="frontend" id="frontend">
-              <label for="frontend">Frontend</label>
-            </div>
-            <div class="group-field">
-              <input type="checkbox" name="A.I." id="A.I.">
-              <label for="A.I.">A.I.</label>
-              <br>
-              <input type="checkbox" name="MachineLearning" id="MachineLearning">
-              <label for="MachineLearning">Machine Learning</label>
-            </div>
-            <div class="group-field">
-              <input type="checkbox" name="DevOps" id="DevOps">
-              <label for="DevOps">DevOps</label>
-              <br>
-              <input type="checkbox" name="Testing" id="Testing">
-              <label for="Testing">Testing</label>
+              <div class="group_input" *ngFor = "let field of fields">
+                <input type="checkbox" name="{{field.name}}" id="{{field.name}}" value="{{field.id}}" (click)="selectedField($event)">
+                <label for="{{field.name}}">{{field.name}}</label>
+              </div>
             </div>
           </div>
         </div>
         <br>
         <div class="language">
           <p class="p_language">What programming languages you know?</p>
-          <div class="form">
-            <div class="group-field">
-              <input type="checkbox" name="backend" id="backend">
-              <label for="backend">Backend</label>
-              <br>
-              <input type="checkbox" name="frontend" id="frontend">
-              <label for="frontend">Frontend</label>
+          <p class="p_language" *ngIf="languages.length == 0"> Select a field from above</p>
+          <div class="group-field" *ngIf="languages.length > 0">
+            <div class="group_input" *ngFor="let language of languages">
+              <input type="checkbox" name="{{language.name}}" id="{{language.name}}" value="{{language.id}}" (click)="selectLanguage($event)"
+              [checked]="selectedLanguage.indexOf(language.id) != -1">
+              <label for="{{language.name}}">{{language.name}}</label>
             </div>
-            <div class="group-field">
-              <input type="checkbox" name="A.I." id="A.I.">
-              <label for="A.I.">A.I.</label>
-              <br>
-              <input type="checkbox" name="MachineLearning" id="MachineLearning">
-              <label for="MachineLearning">Machine Learning</label>
-            </div>
-            <div class="group-field">
-              <input type="checkbox" name="DevOps" id="DevOps">
-              <label for="DevOps">DevOps</label>
-              <br>
-              <input type="checkbox" name="Testing" id="Testing">
-              <label for="Testing">Testing</label>
-            </div>
-        </div>
+          </div>
         </div>
         <br>
         <button type="submit" class="btn btn-white">Register</button>

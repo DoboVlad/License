@@ -90,3 +90,9 @@
       padding: 5px 15px;
     }
 }
+
+a{
+  color:#551A8B;
+  cursor: pointer;
+  text-decoration: underline;
+}

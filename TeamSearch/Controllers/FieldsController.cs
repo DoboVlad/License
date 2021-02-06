@@ -23,10 +23,11 @@ namespace TeamSearch.Controllers
         }
 
         [HttpGet]
-        [Route("fields")]
-        public async Task<ActionResult<Field>> getFields()
+        [Route("fields/{id}")]
+        public async Task<ActionResult<Field>> getLanguageByField(int id)
         {
             var fields = await context.FIELDS
+            .Where(x => x.id == id)
             .Include(x => x.fieldLanguages)
             .ThenInclude(x => x.Language)
             .ToListAsync();
@@ -34,6 +35,17 @@ namespace TeamSearch.Controllers
             var fieldToReturn = mapper.Map<IEnumerable<FieldDTO>>(fields);
 
             return Ok(fieldToReturn);
+        }
+
+        [HttpGet]
+        [Route("getFields")]
+        public async Task<ActionResult<FieldDTO>> getFields()
+        {
+            var fields = await context.FIELDS.ToListAsync();
+
+            var fieldsToReturn = mapper.Map<IEnumerable<FieldDTO>>(fields);
+
+            return Ok(fieldsToReturn);
         }
     }
 }

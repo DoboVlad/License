@@ -45,9 +45,18 @@
   width: 100%;
 }
 
-.group-field{
-  display: inline-block;
+.group_input{
   text-align: start;
+}
+
+.group_input:nth-child(4n) {
+  flex-basis: 100%;
+}
+
+.group-field{
+  text-align: start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .form{
